@@ -12,10 +12,27 @@ public class Gameboard {
     }
 
     public void nullifySpace(int xCoord, int yCoord) {
-        if (xCoord > gameboard.length || yCoord > gameboard[0].length || xCoord < 0 || yCoord < 0) {
-            return;
-        } else {
+        // Make sure the space exists
+        if (!(xCoord > gameboard.length || yCoord > gameboard[0].length || xCoord < 0 || yCoord < 0)) {
             gameboard[xCoord][yCoord] = 2;
+        }
+    }
+
+    public void addPeg(int xCoord, int yCoord) {
+        // Make sure the space exists and is part of the board
+        if (!(xCoord > gameboard.length || yCoord > gameboard[0].length || xCoord < 0 || yCoord < 0
+            || gameboard[xCoord][yCoord] != 2)) {
+
+            gameboard[xCoord][yCoord] = 1;
+        }
+    }
+
+    public void removePeg(int xCoord, int yCoord) {
+        // Make sure the space exists and is part of the board
+        if (!(xCoord > gameboard.length || yCoord > gameboard[0].length || xCoord < 0 || yCoord < 0
+                || gameboard[xCoord][yCoord] != 2)) {
+
+            gameboard[xCoord][yCoord] = 0;
         }
     }
 }
