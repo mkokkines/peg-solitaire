@@ -1,14 +1,20 @@
+import java.util.ArrayList;
+
 /**
- * The gameboard class creates a 2D integer array to represent the gameboard.
- * 0 means the space is empty
- * 1 means the space is filled
- * 2 means the space if off-limits
+ * The gameboard class creates a 2D character array to represent the gameboard.
+ * □ means the space is empty
+ * \u25cf means the space is filled
+ * \u2001 means the space if off-limits
  */
 public class Gameboard {
     private char[][] gameboard;
 
     public Gameboard(int length, int width) {
         gameboard = new char[length][width];
+    }
+
+    public char getSpace(int xCoord, int yCoord) {
+        return gameboard[xCoord][yCoord];
     }
 
     public void nullifySpace(int xCoord, int yCoord) {
@@ -44,5 +50,19 @@ public class Gameboard {
 
             System.out.println();
         }
+    }
+
+    public ArrayList<Coordinate> getBlankSpaces() {
+        ArrayList<Coordinate> blankSpaces = new ArrayList<Coordinate>();
+
+        for (int i = 0; i < gameboard.length; i++) {
+            for (int j = 0; j < gameboard[0].length; j++) {
+                if (gameboard[i][j] == '\u25a1') {
+                    blankSpaces.add(new Coordinate(i, j));
+                }
+            }
+        }
+
+        return blankSpaces;
     }
 }
